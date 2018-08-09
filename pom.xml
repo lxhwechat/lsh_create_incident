@@ -1,0 +1,55 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sap.solman.fiori</groupId>
+	<artifactId>CreateIncident</artifactId>
+	<version>1.6.2-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>Create Incident</name>
+	<description>Create Incident Fiori Application</description>
+    <parent>
+        <groupId>com.sap.fiori</groupId>
+        <artifactId>fnf-parent-pom</artifactId>
+        <version>1.14.13</version>
+    </parent>
+    <properties>
+        <web.context.name>${project.artifactId}</web.context.name>
+    </properties>
+	<!-- Add your dependencies here, e.g. to UI5 mobile library -->
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.sap.ldi</groupId>
+				<artifactId>translation-plugin</artifactId>
+				<configuration>
+					<translationDomain>SV</translationDomain>
+					<translationDeveloper>D055531</translationDeveloper>
+					<translationCollection>FIORI_Solman_CreateIncident</translationCollection>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>optimized.build</id>
+			<activation>
+				<property>
+					<name>ldi.releaseBuild</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- create static archives for upload to ABAP -->
+					<plugin>
+						<groupId>com.sap.ui5.tools.maven</groupId>
+						<artifactId>lightening-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

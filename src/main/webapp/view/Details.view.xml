@@ -1,0 +1,134 @@
+<mvc:View controllerName="sm.itsm.createincident.view.Details" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:ui="sap.ca.ui" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core">
+	<html:style>
+		.myContentStyle {
+		margin: 0.5em 0 0.5em 0.5em;
+		}
+	</html:style>
+	<Page id="DetailsPage" navButtonPress="onNavBack" showNavButton="false" title="{i18n>CREATE_INCIDENT_TITLE}">
+		<ObjectHeader id="ObjectHeader" condensed="false">
+		</ObjectHeader>
+		<core:ExtensionPoint name="extensionAfterObjectHeader"/>
+		<l:Grid id="DetailsGrid" defaultSpan="L12 M12 S12" width="auto">
+			<l:content>
+				<f:Form  editable="true"
+					id="InformationForm"
+					minWidth="1024"
+					maxContainerCols="2" >
+					<f:title>
+						<core:Title text="{i18n>CREATE_INCIDENT_FORM_TITLE}"></core:Title>
+					</f:title>
+					<f:layout>
+						<f:ResponsiveGridLayout id="InformationFormResponsiveGrid"
+						labelSpanL="4"
+					labelSpanM="4"
+					emptySpanL="0"
+					emptySpanM="0"
+					columnsL="2"
+					columnsM="2">
+						</f:ResponsiveGridLayout>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer id="InformationFormContainer1">
+							<f:formElements>
+								<f:FormElement id="ShortTextFormElement">
+									<f:label>
+										<Label id="ShortTextLabel" required="true" text="{i18n>INPUT_SHORTTEXT_LABEL}"/>	
+									</f:label>
+									<f:fields>
+										<Input id="ShortText" liveChange="onShortTextLiveChange" type="Text"
+							value="{ path : '/title', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 40 }}"
+							valueStateText="{i18n>INPUT_SHORTTEXT_ERROR_STATE}" ariaLabelledBy="ShortTextLabel" />
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement id="PriorityFormElement">
+									<f:label>
+										<Label id="PriorityLabel" text="{i18n>PRIORITY}"/>
+									</f:label>
+									<f:fields>
+										<Select autoAdjustWidth="true" id="Priority" items="{ path: '/PrioritySet', sorter: { path: 'Description' } }" ariaLabelledBy="PriorityLabel">
+											<core:Item id="PriorityItem" key="{PrioCode}" text="{Description}"  />
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement id="ContactPersonFormElement">
+									<f:label>
+										<Label id="LabelContactPerson" text="{i18n>CONTACT_PERSON}"/>
+									</f:label>
+									<f:fields>
+										<Input app:type="{Partner}" editable="true" id="ContactPerson" liveChange="onValidatedFieldLiveChange" showSuggestion="true" showValueHelp="true"
+												valueHelpRequest="onValueHelpContact"
+												suggest="handleSuggest" suggestionItemSelected="suggestionItemSelected"
+												suggestionItems="{path: '/BusinessPartnerSet', parameters:{select: 'Name,Partner'}}" type="Text"
+												value="{ path : 'newIncident>/Detail/ContactPerson', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 100 } }"
+												valueStateText="{i18n>CONTACTPERSON_ERROR_STATE}" ariaLabelledBy="LabelContactPerson">
+											<suggestionItems>
+												<core:Item id="ContactPersonItem" app:type="{Partner}" text="{Name}" />
+											</suggestionItems>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer id="InformationFormContainer2">
+							<f:formElements id="InformationFormContainer2Elements">
+								<f:FormElement id="CategoryFormElement">
+									<f:label>
+										<Label id="CategoryLabel" text="{i18n>CATEGORY}"/>
+									</f:label>
+									<f:fields>
+										<Input id="CategoryInput" showValueHelp="true" type="Text" valueHelpOnly="true" valueHelpRequest="onCategoryValueHelp" ariaLabelledBy="CategoryLabel">
+										</Input>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement id="ComponentFormElement">
+									<f:label>
+										<Label id="ComponentLabel" text="{i18n>COMPONENT}"/>
+									</f:label>
+									<f:fields>
+										<Input id="ComponentInput" value="{/component}" showValueHelp="true" type="Text" valueHelpOnly="true" valueHelpRequest="onComponentValueHelp" 
+										ariaLabelledBy="ComponentLabel"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement id="ConfigItemFormElement">
+									<f:label>
+										<Label id="ConfigItemLabel" text="{i18n>CONFIG_ITEM}"/>
+									</f:label>
+									<f:fields>
+										<Input app:type="{ConfigItemId}" editable="true" id="ConfigItemInput" liveChange="onValidatedFieldLiveChange" showSuggestion="true" showValueHelp="false"
+												suggest="CIhandleSuggest" suggestionItemSelected="CIsuggestionItemSelected"
+												suggestionItems="{path: '/ConfigurationItemSet', parameters:{select: 'Description,ConfigItemId'}}" type="Text"
+												value="{ path : 'newIncident>/Detail/ConfigItem', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 40 } }"
+												valueStateText="{i18n>CONFIGITEM_ERROR_STATE}" ariaLabelledBy="ConfigItemLabel">
+											<suggestionItems>
+												<core:Item id="ConfigItemItem" app:type="{ConfigItemId}" text="{Description}"/>
+											</suggestionItems>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<core:ExtensionPoint name="extensionAfterInformationForm"/>
+				<f:SimpleForm id="SimpleFormDescription" editable="true" layout="ResponsiveGridLayout" title="{i18n>DESCRIPTION_FORM_TITLE}">
+					<f:content>
+						<TextArea id="Description" placeholder="{i18n>TEXTAREA_DESCRIPTION_PLACEHOLDER}" rows="10" value="{/description}"></TextArea>
+					</f:content>
+				</f:SimpleForm>
+				<core:ExtensionPoint name="extensionAfterDescriptionForm"/>
+				<UploadCollection class="sapUiResponsiveContentPadding" change="onChange" fileDeleted="onDeleteFile" fileRenamed="onFileRenamed" id="fileUpload" instantUpload="false"
+					multiple="true" noDataText="{i18n>ATTACHMENT_NO_DATA_TEXT}" uploadComplete="onUploadComplete" visible="true">
+				</UploadCollection>
+			</l:content>
+		</l:Grid>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="SaveButton" press="onSave" type="Emphasized" text="{i18n>BUTTON_CREATE}"/>
+					<Button id="CancelButton" press="onCancel" text="{i18n>BUTTON_CANCEL}"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

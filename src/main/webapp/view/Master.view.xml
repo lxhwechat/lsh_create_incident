@@ -1,0 +1,43 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:table="sap.ui.table"
+	controllerName="sm.itsm.createincident.view.Master">
+	<Page id="productListPage" title="{i18n>CREATE_INCIDENT_TITLE}">
+		<content>
+			<l:VerticalLayout id="IncidentTypeVerticalLayout" class="sapUiResponsiveMargin" >
+				<l:content>
+					<Table id="IncidentTypeSelectionTable" class="navTableControlLayout"
+				items="{/ProcessTypeSet}"			 
+				growing="true" growingScrollToLoad="true">
+						<headerToolbar id ="IncidentTypeSelectionTableHeaderToolbar">
+							<Toolbar id="IncidentTypeSelectionTableToolbar">
+								<Title id="LabelSelectProcessType" text="{i18n>SELECT_PROCESS_TYPE}" level="auto" />
+							</Toolbar>
+						</headerToolbar>
+						<columns id ="IncidentTypeSelectionTableColumns">
+							<Column id="IncidentTypeSelectionTableColumn1" width="auto" hAlign="Left">
+								<header id="IncidentTypeSelectionTableColumn1Header" > 
+									<Label id="IncidentTypeSelectionTableColumn1Label" text="{i18n>INCIDENT_TYPE}" />	
+								</header>
+							</Column>				
+							<Column id="IncidentTypeSelectionTableColumn2" width="auto" hAlign="Left">
+								<header id="IncidentTypeSelectionTableColumn2Header">
+									<Label id="IncidentTypeSelectionTableColumn2Label"  text="{i18n>DESCRIPTION}" />						
+								</header>
+							</Column>
+						</columns>
+						<ColumnListItem id="IncidentTypeSelectionTableColumnListItem" vAlign="Middle" type="Navigation"
+					press="onLineItemPressed" class="navTableItemLayout">
+							<cells id="IncidentTypeSelectionTableColumnListItemCells"> 
+								<ObjectIdentifier id="IncidentTypeSelectionTableColumnListItemCell1" title="{ProcessTypeCode}" />
+								<Text id="IncidentTypeSelectionTableColumnListItemCell2" text="{ProcessTypeDescriptionLong}">
+								</Text>
+							</cells>
+						</ColumnListItem>
+					</Table>
+				</l:content>
+			</l:VerticalLayout>
+		</content>
+		<footer>
+		</footer>
+	</Page>
+</mvc:View>
