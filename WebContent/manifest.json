@@ -1,0 +1,119 @@
+{
+  "_version": "1.4.0",
+  "sap.app": {
+    "_version": "1.3.0",
+    "id": "sm.itsm.createincident",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "${project.version}"
+    },
+    "title": "{{CREATE_INCIDENT_TITLE}}",
+    "subTitle": "{{CREATE_INCIDENT_SUBTITLE}}",
+    "description": "{{CREATE_INCIDENT_APP_DESCRIPTION}}",
+    "ach": "SV-SMG-SUP",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/AI_CRM_GW_CREATE_INCIDENT_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "test/service/metadata.xml"
+        }
+      }
+    },
+    "resources": "resources.json",
+    "offline": false,
+    "sourceTemplate": {
+      "id": "sap.ui.ui5-template-plugin.1worklist",
+      "version": "1.0.5"
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [
+      "F2128"
+    ],
+    "archeType": "transactional"
+  },
+  "sap.ui": {
+    "_version": "1.3.0",
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://create",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_bluecrystal"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.2.0",
+    "rootView": "sm.itsm.createincident.view.Main",
+    "dependencies": {
+      "minUI5Version": "${sap.ui5.dist.version}",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ui.comp": {
+          "minVersion": ""
+        },
+        "sap.ui.richtexteditor": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sm.itsm.createincident.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "metadataUrlParams": {
+            "sap-documentation": "heading"
+          }
+        }
+      }
+    },
+    "config": {
+      "sapFiori2Adaptation": true
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "sm.itsm.createincident.view",
+        "controlId": "fioriContent",
+        "controlAggregation": "pages"
+      },
+      "routes": [
+        {
+          "pattern": "list",
+          "name": "main",
+          "view": "Master"
+        },
+        {
+          "name": "details",
+          "view": "Details",
+          "pattern": "{entity}"
+        }
+      ]
+    }
+  }
+}
