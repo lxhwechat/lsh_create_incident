@@ -1,0 +1,28 @@
+{
+  "name": "lsh_create_incident",
+  "version": "1.0.0",
+  "description": "lsh_create_incident",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && ui5 build --a && rimraf dist/resources"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxhwechat/lsh_create_incident.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lxhwechat/lsh_create_incident/issues"
+  },
+  "homepage": "https://github.com/lxhwechat/lsh_create_incident#readme",
+  "dependencies": {
+    "@openui5/sap.m": "^1.56.4",
+    "@openui5/sap.ui.core": "^1.56.4",
+    "@openui5/themelib_sap_bluecrystal": "^1.56.4"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  }
+}
