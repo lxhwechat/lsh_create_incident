@@ -1,12 +1,12 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
-	"sm/itsm/createincident/util/Util",
+	"zwx/sm/itsm/createincident/util/Util",
 	"sap/ui/core/routing/History",
-	"sm/itsm/createincident/model/models"
+	"zwx/sm/itsm/createincident/model/models"
 ], function(UIComponent, Util, History, models) {
 	"use strict";
 
-	return UIComponent.extend("sm.itsm.createincident.Component", {
+	return UIComponent.extend("zwx.sm.itsm.createincident.Component", {
 		metadata: {
 			manifest: "json"
 		},
@@ -99,7 +99,7 @@ sap.ui.define([
 
 		onErrorClose: function() {
 			if (Util.hasCancelListener()) {
-				this.eventBus.publish("sm.itsm.createincident", "afterCancel");
+				this.eventBus.publish("zwx.sm.itsm.createincident", "afterCancel");
 			} else {
 				Util.navToLaunchpad();
 			}

@@ -1,5 +1,5 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
-           xmlns="sap.m" controllerName="sm.itsm.createincident.view.Main" displayBlock="true" height="100%">
+           xmlns="sap.m" controllerName="zwx.sm.itsm.createincident.view.Main" displayBlock="true" height="100%">
         <App id="fioriContent">
         </App>
 </mvc:View>

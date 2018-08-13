@@ -175,7 +175,7 @@ sap.ui.define([
 
 			// instantiate dialog
 			if (!oDialog) {
-				oDialog = sap.ui.xmlfragment(id, "sm.itsm.createincident.view.fragments.BusyDialog", oController);
+				oDialog = sap.ui.xmlfragment(id, "zwx.sm.itsm.createincident.view.fragments.BusyDialog", oController);
 				oView.addDependent(oDialog);
 				oDialog.setTitle(oTitle);
 				jQuery.sap.syncStyleClass("sapUiSizeCompact", oView, oDialog);
@@ -398,8 +398,8 @@ sap.ui.define([
 
 			var bReturn = false;
 
-			if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"]) {
-				if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"].hasListeners("afterCreate")) {
+			if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"]) {
+				if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"].hasListeners("afterCreate")) {
 					bReturn = true;
 				}
 			}
@@ -410,8 +410,8 @@ sap.ui.define([
 
 			var bReturn = false;
 
-			if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"]) {
-				if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"].hasListeners("afterCancel")) {
+			if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"]) {
+				if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"].hasListeners("afterCancel")) {
 					bReturn = true;
 				}
 			}

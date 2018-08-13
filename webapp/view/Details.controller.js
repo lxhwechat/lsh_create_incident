@@ -1,12 +1,12 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
-	"sm/itsm/createincident/util/Util"
+	"zwx/sm/itsm/createincident/util/Util"
 
 ], function(Controller, MessageBox, Util) {
 	"use strict";
 
-	return Controller.extend("sm.itsm.createincident.view.Details", {
+	return Controller.extend("zwx.sm.itsm.createincident.view.Details", {
 
 		_oItemTemplate: null,
 		_oNavigationTable: null,
@@ -215,7 +215,7 @@ sap.ui.define([
 			 * This hook is called after the Route "details" is called
 			 * and the route pattern matched
 			 * This happens after the selection of the Incident Type or when the Incident Type has been set externally
-			 * @callback sm.itsm.createincident.view.Details~extHookOnIncidentTypeSelection
+			 * @callback zwx.sm.itsm.createincident.view.Details~extHookOnIncidentTypeSelection
 			 * @param {sap.ui.base.Event} Route Pattern Matched Event
 			 * @return {void}  ...
 			 */
@@ -231,7 +231,7 @@ sap.ui.define([
 
 		onCancel: function() {
 			if (Util.hasCancelListener()) {
-				this.eventBus.publish("sm.itsm.createincident", "afterCancel");
+				this.eventBus.publish("zwx.sm.itsm.createincident", "afterCancel");
 			} else {
 				Util.navToLaunchpad();
 			}
@@ -398,7 +398,7 @@ sap.ui.define([
 			 *
 			 * This hook is called before the Incident is created
 			 * This happens after the selection of the Create Button
-			 * @callback sm.itsm.createincident.view.Details~extHookOnBeforeCreateIncident
+			 * @callback zwx.sm.itsm.createincident.view.Details~extHookOnBeforeCreateIncident
 			 * @param {array} Incident Data
 			 * @return {void}  ...
 			 */
@@ -462,7 +462,7 @@ sap.ui.define([
 		},
 
 		onCategoryValueHelp: function(oEvent) {
-			this._oPopover = sap.ui.xmlfragment("categoryPopover", "sm.itsm.createincident.view.fragments.CategoryPopover", this);
+			this._oPopover = sap.ui.xmlfragment("categoryPopover", "zwx.sm.itsm.createincident.view.fragments.CategoryPopover", this);
 			this._oPopover.setModel(this.getView().getModel());
 			this._oPopover.setModel(this.getView().getModel("i18n"), "i18n");
 			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oPopover);
@@ -488,7 +488,7 @@ sap.ui.define([
 		},
 
 		onComponentValueHelp: function(oEvent) {
-			this._oPopover = sap.ui.xmlfragment("componentPopover", "sm.itsm.createincident.view.fragments.ComponentPopover", this);
+			this._oPopover = sap.ui.xmlfragment("componentPopover", "zwx.sm.itsm.createincident.view.fragments.ComponentPopover", this);
 			this._oPopover.setModel(this.getView().getModel());
 			this._oPopover.setModel(this.getView().getModel("i18n"), "i18n");
 			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oPopover);
@@ -867,7 +867,7 @@ sap.ui.define([
 
 			if (Util.hasCreateListener()) {
 
-				this.eventBus.publish("sm.itsm.createincident", "afterCreate", {
+				this.eventBus.publish("zwx.sm.itsm.createincident", "afterCreate", {
 					objectId: this._oView.createdObjectId,
 					objectGuid: this._oView.createdGuid
 				});
@@ -888,8 +888,8 @@ sap.ui.define([
 
 		// 	var bReturn = false;
 
-		// 	if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"]) {
-		// 		if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"].hasListeners("afterCreate")) {
+		// 	if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"]) {
+		// 		if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"].hasListeners("afterCreate")) {
 		// 			bReturn = true;
 		// 		}
 		// 	}
@@ -900,8 +900,8 @@ sap.ui.define([
 
 		// 	var bReturn = false;
 
-		// 	if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"]) {
-		// 		if (this.eventBus.getInterface()._mChannels["sm.itsm.createincident"].hasListeners("afterCancel")) {
+		// 	if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"]) {
+		// 		if (this.eventBus.getInterface()._mChannels["zwx.sm.itsm.createincident"].hasListeners("afterCancel")) {
 		// 			bReturn = true;
 		// 		}
 		// 	}

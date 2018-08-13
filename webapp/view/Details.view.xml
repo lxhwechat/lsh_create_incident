@@ -1,4 +1,4 @@
-<mvc:View controllerName="sm.itsm.createincident.view.Details" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+<mvc:View controllerName="zwx.sm.itsm.createincident.view.Details" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:rt="sap.ui.richtexteditor" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:ui="sap.ca.ui" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core">
 	<html:style>
 		.myContentStyle {
@@ -110,16 +110,16 @@
 				<core:ExtensionPoint name="extensionAfterInformationForm"/>
 				<f:SimpleForm id="SimpleFormDescription" editable="true" layout="ResponsiveGridLayout" title="{i18n>DESCRIPTION_FORM_TITLE}">
 					<f:content>
-						<!-- <VBox> -->
+						<VBox>
 							<TextArea width="100%" id="Description" visible="false" placeholder="{i18n>TEXTAREA_DESCRIPTION_PLACEHOLDER}" rows="10" value="{/description}"></TextArea>
-							<!-- <rt:RichTextEditor id="DescriptionRT"
+							<rt:RichTextEditor id="DescriptionRT"
 								height="600px"
 								width="100%"
 								editable="true"
 								visible="false"
 								editorType="TinyMCE4">
-							</rt:RichTextEditor> -->
-						<!-- </VBox> -->
+							</rt:RichTextEditor>
+						</VBox>
 					</f:content>
 				</f:SimpleForm>
 				<core:ExtensionPoint name="extensionAfterDescriptionForm"/>

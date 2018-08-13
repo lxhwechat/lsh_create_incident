@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/TablePersoController",
-	"sm/itsm/createincident/util/Util"
+	"zwx/sm/itsm/createincident/util/Util"
 ], function(Controller, TablePersoController, Util) {
 	"use strict";
 
-	return Controller.extend("sm.itsm.createincident.view.Master", {
+	return Controller.extend("zwx.sm.itsm.createincident.view.Master", {
 
 		_oCatalog: null,
 		_oResourceBundle: null,

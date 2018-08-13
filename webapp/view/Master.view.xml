@@ -1,6 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
 	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:table="sap.ui.table"
-	controllerName="sm.itsm.createincident.view.Master">
+	controllerName="zwx.sm.itsm.createincident.view.Master">
 	<Page id="productListPage" title="{i18n>CREATE_INCIDENT_TITLE}">
 		<content>
 			<l:VerticalLayout id="IncidentTypeVerticalLayout" class="sapUiResponsiveMargin" >
