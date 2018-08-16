@@ -110,7 +110,7 @@
 				<core:ExtensionPoint name="extensionAfterInformationForm"/>
 				<f:SimpleForm id="SimpleFormDescription" editable="true" layout="ResponsiveGridLayout" title="{i18n>DESCRIPTION_FORM_TITLE}">
 					<f:content>
-						<VBox>
+						<!-- <VBox>
 							<TextArea width="100%" id="Description" visible="false" placeholder="{i18n>TEXTAREA_DESCRIPTION_PLACEHOLDER}" rows="10" value="{/description}"></TextArea>
 							<rt:RichTextEditor id="DescriptionRT"
 								height="600px"
@@ -119,7 +119,8 @@
 								visible="false"
 								editorType="TinyMCE4">
 							</rt:RichTextEditor>
-						</VBox>
+						</VBox> -->
+						<TextArea id="Description" placeholder="{i18n&gt;TEXTAREA_DESCRIPTION_PLACEHOLDER}" rows="10" value="{/description}" />
 					</f:content>
 				</f:SimpleForm>
 				<core:ExtensionPoint name="extensionAfterDescriptionForm"/>

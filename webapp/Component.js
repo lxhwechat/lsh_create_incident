@@ -39,11 +39,28 @@ sap.ui.define([
 				if (this.oComponentData.startupParameters.PROCESS_TYPE) {
 					this.sValueProcessType = this.oComponentData.startupParameters.PROCESS_TYPE[0];
 				}
+
+				if (this.oComponentData.startupParameters.sapWxDelegater) {
+					// init ODataModel header
+					this.getModel().setHeaders({"sap-wx-delegater":this.oComponentData.startupParameters.sapWxDelegater[0]});
+					// this.getModel().setHeaders({
+					// 	"Authorization":"Bearer " + "AFBWh2xvHuin2eUDHYCOLlakVYHRjqDOHGV3R4ISrfkGXvM9"
+					// });
+					//
+				}
 			} else {
 				this.oComponentData = {
 					startupParameters: {}
 				};
 			}
+
+			//////////
+			// test
+			//////////
+			// this.getModel().setHeaders({"Authorization": "Basic U0FQX09MSVZFUjpTb2xtYW43MjA="});
+			//////////
+			// test
+			//////////
 
 			this.getModel().read("/ProcessTypeSet", {
 				success: function(oResponse) {

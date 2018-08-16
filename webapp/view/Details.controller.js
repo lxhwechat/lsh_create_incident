@@ -28,7 +28,7 @@ sap.ui.define([
 			this.getView().byId("fileUpload").setModel(new sap.ui.model.json.JSONModel({
 				"items": []
 			}));
-			
+
 			this.oTextArea = this.getView().byId("Description");
 			this.oRichTextEditor = this.getView().byId("DescriptionRT");
 
@@ -72,7 +72,7 @@ sap.ui.define([
 			// Get Context Path for Page 2 Screen
 			this._oRouter.attachRoutePatternMatched(this._onRoutePatternMatched, this);
 
-			//  Change filter of ContactPerson suggestion item	
+			//  Change filter of ContactPerson suggestion item
 			this.byId("ContactPerson").setFilterFunction(function(sTerm, oItem) {
 				// A case-insensitive 'string contains' style filter
 				// 			return oItem.getText().match(new RegExp(sTerm, "i"));
@@ -80,7 +80,7 @@ sap.ui.define([
 
 			});
 
-			//  Change filter of ConfigItem suggestion item		
+			//  Change filter of ConfigItem suggestion item
 			this.byId("ConfigItemInput").setFilterFunction(function(sTerm, oItem) {
 				// A case-insensitive 'string contains' style filter
 				// 			return oItem.getText().match(new RegExp(sTerm, "i"));
@@ -111,8 +111,8 @@ sap.ui.define([
 
 				}, this
 			);
-			
-			
+
+
 			this._oView.byId("ConfigItemInput").getBinding("suggestionItems").attachDataReceived(
 				function(oEvent) {
 
@@ -202,14 +202,14 @@ sap.ui.define([
 			if (!this._oComponent.getPriority()) {
 				this.setDefaultPriority();
 			}
-			
+
 			Util.getTextMode(this._oComponent.getModel(), this.sValueProcessType, this.oRichTextEditor , this.oTextArea);
 
 			// var sProcTypeDesc = this.bundle.getText("CREATE_INCIDENT_TITLE_PREFIX") + " " + Util.getProcTypeDesc();
 			// this.getView().byId("DetailsPage").setTitle(sProcTypeDesc);
 			this.getView().byId("ObjectHeader").setTitle(Util.getProcTypeDesc());
 
-			/**    
+			/**
 			 * @ControllerHook [Hook to update/initialize after Incident Type Selection]
 			 *
 			 * This hook is called after the Route "details" is called
@@ -279,17 +279,18 @@ sap.ui.define([
 			}
 
 			//      Get value in Input Field
-			if (oView.byId("DescriptionRT").getVisible()) {
-				var sValueDescription = oView.byId("DescriptionRT").getValue();
-				var sTextMode = "H"; // HTML Text
-				sValueDescription = "<html>" + "<head>" + "</head>" + "<body>" + sValueDescription + "</body></html>";
-			}
-			
-			if (oView.byId("Description").getVisible()) {
-				sValueDescription = oView.byId("Description").getValue();
-				sTextMode = "P"; // Plain Text
-			}	
-			
+			// if (oView.byId("DescriptionRT").getVisible()) {
+			// 	var sValueDescription = oView.byId("DescriptionRT").getValue();
+			// 	var sTextMode = "H"; // HTML Text
+			// 	sValueDescription = "<html>" + "<head>" + "</head>" + "<body>" + sValueDescription + "</body></html>";
+			// }
+			//
+			// if (oView.byId("Description").getVisible()) {
+			// 	sValueDescription = oView.byId("Description").getValue();
+			// 	sTextMode = "P"; // Plain Text
+			// }
+			var sValueDescription = oView.byId("Description").getValue();
+
 			var sValueShortText = oView.byId("ShortText").getValue();
 			var sValueCategory = oView.byId("CategoryInput").data("CategoryId");
 			var sValueCategoryCategoryCatalogType = oView.byId("CategoryInput").data("CategoryCatalogType");
@@ -390,10 +391,10 @@ sap.ui.define([
 				CategoryId: sValueCategory,
 				ConfigurationItemId: sValueConfigItem,
 				Partner2: this.sValueContactPerson,
-				TextMode : sTextMode
+				// TextMode : sTextMode
 			};
 
-			/**    
+			/**
 			 * @ControllerHook [Hook to change entity data before Creation]
 			 *
 			 * This hook is called before the Incident is created
@@ -416,7 +417,7 @@ sap.ui.define([
 					// Also Upload Attachments
 					if (this.numberOfAttachmentsToUpload >= 1) {
 
-						// construct Upload URL from response GUID 
+						// construct Upload URL from response GUID
 						var uploadURL = this.getView().getModel().sServiceUrl + "/IncidentSet(guid'" + mResponse.Guid + "')" + "/AttachmentSet";
 						$.each(oUploadCollection._aFileUploadersForPendingUpload, function(index, value) {
 							oUploadCollection._aFileUploadersForPendingUpload[index].setProperty("uploadUrl", uploadURL);
@@ -727,7 +728,7 @@ sap.ui.define([
 
 			// if (this._oPopover) {
 			// 	this._oPopover.destroy();
-			// } 
+			// }
 
 			this.aFilterStack = [];
 
@@ -743,7 +744,7 @@ sap.ui.define([
 			}
 		},
 
-		// used to fill the custom data 'type into the Contact Person field input field so we can read it later	
+		// used to fill the custom data 'type into the Contact Person field input field so we can read it later
 		suggestionItemSelected: function(oControlEvent) {
 			var oSelectedItem = oControlEvent.getParameters("selectedItem");
 			var oSelected = oSelectedItem.selectedItem;
@@ -916,7 +917,7 @@ sap.ui.define([
 		// 		var semanticObject = "Action";
 		// 		var action = "SMMyIncidents";
 
-		//              /* eslint-disable sap-cross-application-navigation */ 
+		//              /* eslint-disable sap-cross-application-navigation */
 
 		// 		oCrossAppNavigator.toExternal({
 		// 			target: {
@@ -941,7 +942,7 @@ sap.ui.define([
 		// 	if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getService) {
 		// 		var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
 		// 		// Navigate back to FLP home
-		// 		/* eslint-disable sap-cross-application-navigation */ 
+		// 		/* eslint-disable sap-cross-application-navigation */
 
 		// 		oCrossAppNavigator.toExternal({
 		// 			target: {
