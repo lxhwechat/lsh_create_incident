@@ -18,9 +18,6 @@
   },
   "homepage": "https://github.com/lxhwechat/lsh_create_incident#readme",
   "dependencies": {
-    "@openui5/sap.m": "^1.56.4",
-    "@openui5/sap.ui.core": "^1.56.4",
-    "@openui5/themelib_sap_bluecrystal": "^1.56.4"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"

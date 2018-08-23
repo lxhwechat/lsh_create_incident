@@ -1,9 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
-	"zwx/sm/itsm/createincident/util/Util"
-
-], function(Controller, MessageBox, Util) {
+	"zwx/sm/itsm/createincident/util/Util",
+	"sap/ui/core/routing/HashChanger"
+], function(Controller, MessageBox, Util, HashChanger) {
 	"use strict";
 
 	return Controller.extend("zwx.sm.itsm.createincident.view.Details", {
@@ -149,6 +149,8 @@ sap.ui.define([
 
 			Util.setModel(this._oComponent.getModel());
 
+			this.hashChanger = HashChanger.getInstance();
+			this.hashChanger.init();
 		},
 
 		// Bind Review Table using oData Reviews Entity
@@ -865,7 +867,6 @@ sap.ui.define([
 
 		postProcessSave: function() {
 			this._dialog.close();
-
 			if (Util.hasCreateListener()) {
 
 				this.eventBus.publish("zwx.sm.itsm.createincident", "afterCreate", {
@@ -881,8 +882,11 @@ sap.ui.define([
 				} else {
 					Util.navToLaunchpad();
 				}
-
 			}
+
+			// this.hashChanger.setHash("itsmmy&/MessageResultSet/" + this._oView.createdGuid, true);
+			// standalone workaround
+			sap.m.URLHelper.redirect('/sap/wechat/my_incidents');
 		}
 
 		// hasCreateListener: function() {
