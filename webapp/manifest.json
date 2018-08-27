@@ -14,7 +14,7 @@
     "ach": "SV-SMG-SUP",
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZWX_GW_CREATE_INCIDENT_SRV/",
+        "uri": "/sap/wechat/odata/gw_create_inc/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
