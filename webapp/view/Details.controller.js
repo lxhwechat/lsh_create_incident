@@ -34,12 +34,12 @@ sap.ui.define([
 
 			this.getView().byId("DetailsPage").setShowNavButton(Util.bShowNavButton);
 
-			this.oPrioritySelection = this.getView().byId("Priority");
+			// this.oPrioritySelection = this.getView().byId("Priority");
 
-			// Set Priority when provided in Component.Js or as URL Param
-			if (this._oComponent.getPriority()) {
-				this.oPrioritySelection.setSelectedKey(this._oComponent.getPriority());
-			}
+			// // Set Priority when provided in Component.Js or as URL Param
+			// if (this._oComponent.getPriority()) {
+			// 	this.oPrioritySelection.setSelectedKey(this._oComponent.getPriority());
+			// }
 
 			// Set Config Item when provided in Component.Js or as URL Param
 			if (this._oComponent.getConfigItem()) {
@@ -201,9 +201,9 @@ sap.ui.define([
 					"ContactPerson"));
 			}
 
-			if (!this._oComponent.getPriority()) {
-				this.setDefaultPriority();
-			}
+			// if (!this._oComponent.getPriority()) {
+			// 	this.setDefaultPriority();
+			// }
 
 			Util.getTextMode(this._oComponent.getModel(), this.sValueProcessType, this.oRichTextEditor , this.oTextArea);
 
@@ -307,10 +307,18 @@ sap.ui.define([
 				this.sValueContactPerson = oView.byId("ContactPerson").data("type");
 			}
 
-			var sValuePriority = oView.byId("Priority").getSelectedKey();
+			// var sValuePriority = oView.byId("Priority").getSelectedKey();
+			var sValueImpact = oView.byId("Impact").getSelectedKey();
+			var sValueUrgency = oView.byId("Urgency").getSelectedKey();
 
 			var inputsToCheckForMandatoryInput = [
-				oView.byId("ShortText")
+				oView.byId("ShortText"),
+				oView.byId("CategoryInput")
+			];
+
+			var selectToCheckForMandatoryInput = [
+				oView.byId("Impact"),
+				oView.byId("Urgency")
 			];
 
 			var inputsToCheckForValidation = [
@@ -321,7 +329,10 @@ sap.ui.define([
 			var inputsToCheckForErrorState = [
 				oView.byId("ShortText"),
 				oView.byId("ConfigItemInput"),
-				oView.byId("ContactPerson")
+				oView.byId("ContactPerson"),
+				oView.byId("Impact"),
+				oView.byId("Urgency"),
+				oView.byId("CategoryInput")
 			];
 
 			// check that inputs are not empty
@@ -331,6 +342,20 @@ sap.ui.define([
 					input.setValueState("Error");
 				} else if (/^\s*$/.test(input.getValue())) {
 					input.setValueState("Error");
+				} else {
+					input.setValueState("None");
+				}
+			});
+
+			jQuery.each(selectToCheckForMandatoryInput, function(i, input) {
+				if (!input.getSelectedKey()) {
+					input.setValueState("Error");
+				} else if (/^\s*$/.test(input.getSelectedKey())) {
+					input.setValueState("Error");
+				} else if (/^0*$/.test(input.getSelectedKey())) {
+					input.setValueState("Error");
+				} else {
+					input.setValueState("None");
 				}
 			});
 
@@ -386,7 +411,9 @@ sap.ui.define([
 				ProcessType: sValueProcessType,
 				Description: sValueShortText,
 				LongText: sValueDescription,
-				Priority: sValuePriority,
+				// Priority: sValuePriority,
+				Impact: sValueImpact,
+				Urgency: sValueUrgency,
 				SAPComponent: sValueComponent,
 				CategoryCatalogType: sValueCategoryCategoryCatalogType,
 				CategoryAspectId: sValueCategoryAspId,
@@ -450,19 +477,19 @@ sap.ui.define([
 		// 	// sap.m.MessageToast.show("Selected Priority: " + evt.getParameters().selectedItem.getText());
 		// },
 
-		setDefaultPriority: function() {
-			if (this.oPrioritySelection) {
-				if (this.defaultPriority) {
-					this.oPrioritySelection.setSelectedKey(this.defaultPriority);
-
-				} else {
-
-					Util.getDefaultPriority(this._oComponent.getModel(), this.sValueProcessType, this.getView().byId(
-						"Priority"));
-
-				}
-			}
-		},
+		// setDefaultPriority: function() {
+		// 	if (this.oPrioritySelection) {
+		// 		if (this.defaultPriority) {
+		// 			this.oPrioritySelection.setSelectedKey(this.defaultPriority);
+		//
+		// 		} else {
+		//
+		// 			Util.getDefaultPriority(this._oComponent.getModel(), this.sValueProcessType, this.getView().byId(
+		// 				"Priority"));
+		//
+		// 		}
+		// 	}
+		// },
 
 		onCategoryValueHelp: function(oEvent) {
 			this._oPopover = sap.ui.xmlfragment("categoryPopover", "zwx.sm.itsm.createincident.view.fragments.CategoryPopover", this);

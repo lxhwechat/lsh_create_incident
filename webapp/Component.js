@@ -21,7 +21,7 @@ sap.ui.define([
 			Util.init();
 			this.clientModel = new sap.ui.model.json.JSONModel({
 				title: "",
-				priority: "",
+				// priority: "",
 				category: "",
 				categoryId: "",
 				component: "",
@@ -131,10 +131,10 @@ sap.ui.define([
 			if (startupParameters.component) {
 				this.setComponent(startupParameters.component[0]);
 			}
-			// Priority
-			if (startupParameters.priority) {
-				this.setPriority(startupParameters.priority[0]);
-			}
+			// // Priority
+			// if (startupParameters.priority) {
+			// 	this.setPriority(startupParameters.priority[0]);
+			// }
 			// Category
 			if (startupParameters.category) {
 				this.setCategory(startupParameters.category[0]);
@@ -156,9 +156,9 @@ sap.ui.define([
 		setComponent: function(sComponent) {
 			this.getModel("incident").setProperty("/component", sComponent);
 		},
-		setPriority: function(sPriority) {
-			this.getModel("incident").setProperty("/priority", sPriority);
-		},
+		// setPriority: function(sPriority) {
+		// 	this.getModel("incident").setProperty("/priority", sPriority);
+		// },
 		setTitle: function(sTitle) {
 			this.getModel("incident").setProperty("/title", sTitle);
 		},
@@ -177,9 +177,9 @@ sap.ui.define([
 		getComponent: function() {
 			return this.getModel("incident").getProperty("/component");
 		},
-		getPriority: function() {
-			return this.getModel("incident").getProperty("/priority");
-		},
+		// getPriority: function() {
+		// 	return this.getModel("incident").getProperty("/priority");
+		// },
 		getTitle: function() {
 			return this.getModel("incident").getProperty("/title");
 		},

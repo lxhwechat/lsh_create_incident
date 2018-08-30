@@ -99,34 +99,34 @@ sap.ui.define([
 			});
 		},
 
-		getDefaultPriority: function(oModel, procType, oInputPrio) {
-			var that = this;
-
-			var fnSuccess = function(oData) {
-
-				if (oData.getDefaultPriority.defaultPrio) {
-					that.oInputPrio.setSelectedKey(oData.getDefaultPriority.defaultPrio);
-				}
-			};
-
-			var fnError = function() {};
-
-			that.oInputPrio = oInputPrio;
-
-			var url = "/getDefaultPriority";
-
-			oModel.callFunction(url, {
-				method: "GET",
-				urlParameters: {
-					"ProcessType": procType
-				},
-				success: fnSuccess,
-				error: fnError
-			});
-		},
+		// getDefaultPriority: function(oModel, procType, oInputPrio) {
+		// 	var that = this;
+		//
+		// 	var fnSuccess = function(oData) {
+		//
+		// 		if (oData.getDefaultPriority.defaultPrio) {
+		// 			that.oInputPrio.setSelectedKey(oData.getDefaultPriority.defaultPrio);
+		// 		}
+		// 	};
+		//
+		// 	var fnError = function() {};
+		//
+		// 	that.oInputPrio = oInputPrio;
+		//
+		// 	var url = "/getDefaultPriority";
+		//
+		// 	oModel.callFunction(url, {
+		// 		method: "GET",
+		// 		urlParameters: {
+		// 			"ProcessType": procType
+		// 		},
+		// 		success: fnSuccess,
+		// 		error: fnError
+		// 	});
+		// },
 
 		getTextMode: function(oModel, procType, richText, plainText) {
-		 
+
 
 			var fnSuccess = function(oData) {
 

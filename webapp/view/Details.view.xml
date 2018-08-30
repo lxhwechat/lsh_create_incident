@@ -38,13 +38,33 @@
 											valueStateText="{i18n>INPUT_SHORTTEXT_ERROR_STATE}" ariaLabelledBy="ShortTextLabel" />
 									</f:fields>
 								</f:FormElement>
-								<f:FormElement id="PriorityFormElement">
+								<!-- <f:FormElement id="PriorityFormElement">
 									<f:label>
 										<Label id="PriorityLabel" text="{i18n>PRIORITY}"/>
 									</f:label>
 									<f:fields>
 										<Select autoAdjustWidth="true" id="Priority" items="{ path: '/PrioritySet', sorter: { path: 'Description' } }" ariaLabelledBy="PriorityLabel">
 											<core:Item id="PriorityItem" key="{PrioCode}" text="{Description}"  />
+										</Select>
+									</f:fields>
+								</f:FormElement> -->
+								<f:FormElement id="ImpactFormElement">
+									<f:label>
+										<Label id="ImpactLabel" required="true" text="{i18n>IMPACT}"/>
+									</f:label>
+									<f:fields>
+										<Select autoAdjustWidth="true" id="Impact" items="{ path: '/ImpactSet', sorter: { path: 'Description' } }" ariaLabelledBy="ImpactLabel">
+											<core:Item id="ImpactItem" key="{ImpactCode}" text="{Description}"  />
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement id="UrgencyFormElement">
+									<f:label>
+										<Label id="UrgencyLabel" required="true" text="{i18n>URGENCY}"/>
+									</f:label>
+									<f:fields>
+										<Select autoAdjustWidth="true" id="Urgency" items="{ path: '/UrgencySet', sorter: { path: 'Description' } }" ariaLabelledBy="UrgencyLabel">
+											<core:Item id="UrgencyItem" key="{UrgencyCode}" text="{Description}"  />
 										</Select>
 									</f:fields>
 								</f:FormElement>
@@ -71,7 +91,7 @@
 							<f:formElements id="InformationFormContainer2Elements">
 								<f:FormElement id="CategoryFormElement">
 									<f:label>
-										<Label id="CategoryLabel" text="{i18n>CATEGORY}"/>
+										<Label id="CategoryLabel" required="true" text="{i18n>CATEGORY}"/>
 									</f:label>
 									<f:fields>
 										<Input id="CategoryInput" showValueHelp="true" type="Text" valueHelpOnly="true" valueHelpRequest="onCategoryValueHelp" ariaLabelledBy="CategoryLabel">
@@ -133,7 +153,7 @@
 			<Bar>
 				<contentRight>
 					<Button id="SaveButton" press="onSave" type="Emphasized" text="{i18n>BUTTON_CREATE}"/>
-					<Button id="CancelButton" press="onCancel" text="{i18n>BUTTON_CANCEL}"/>
+					<!-- <Button id="CancelButton" press="onCancel" text="{i18n>BUTTON_CANCEL}"/> -->
 				</contentRight>
 			</Bar>
 		</footer>
